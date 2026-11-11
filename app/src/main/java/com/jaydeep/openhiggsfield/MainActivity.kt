@@ -83,16 +83,16 @@ class MainActivity : AppCompatActivity() {
         }
         webView = WebView(this).apply {
             setBackgroundColor(0xFF09090F.toInt())
-            settings.javaScriptEnabled = true
-            settings.domStorageEnabled = true
-            settings.databaseEnabled = true
-            settings.loadsImagesAutomatically = true
-            settings.javaScriptCanOpenWindowsAutomatically = false
-            settings.setSupportMultipleWindows(false)
-            settings.allowFileAccess = false
-            settings.allowContentAccess = true
-            settings.mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_NEVER_ALLOW
-            settings.mediaPlaybackRequiresUserGesture = true
+            this.settings.javaScriptEnabled = true
+            this.settings.domStorageEnabled = true
+            this.settings.databaseEnabled = true
+            this.settings.loadsImagesAutomatically = true
+            this.settings.javaScriptCanOpenWindowsAutomatically = false
+            this.settings.setSupportMultipleWindows(false)
+            this.settings.allowFileAccess = false
+            this.settings.allowContentAccess = true
+            this.settings.mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_NEVER_ALLOW
+            this.settings.mediaPlaybackRequiresUserGesture = true
             CookieManager.getInstance().setAcceptCookie(true)
             CookieManager.getInstance().setAcceptThirdPartyCookies(this, true)
             webViewClient = object : WebViewClient() {
@@ -123,8 +123,8 @@ class MainActivity : AppCompatActivity() {
             }
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView, newProgress: Int) {
-                    progress.progress = newProgress
-                    progress.visibility = if (newProgress >= 100) View.GONE else View.VISIBLE
+                    this@MainActivity.progress.progress = newProgress
+                    this@MainActivity.progress.visibility = if (newProgress >= 100) View.GONE else View.VISIBLE
                 }
                 override fun onShowFileChooser(webView: WebView, filePathCallback: ValueCallback<Array<Uri>>, fileChooserParams: FileChooserParams): Boolean {
                     uploadCallback?.onReceiveValue(null)
